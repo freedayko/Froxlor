@@ -22,6 +22,7 @@
  */
 require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.dns.10.bind.php'));
 require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.http.10.apache.php'));
+require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.http.13.apache_suphp.php'));
 require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.http.15.apache_fcgid.php'));
 require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.http.20.lighttpd.php'));
 require_once(makeCorrectFile(dirname(__FILE__) . '/cron_tasks.inc.http.25.lighttpd_fcgid.php'));
@@ -140,6 +141,10 @@ while($row = $db->fetch_array($result_tasks))
 		{
 			if($settings['system']['webserver'] == "apache2")
 			{
+				if($settings['system']['mod_suphp'] == 1)
+				{
+					$webserver = new apache_suphp($db, $cronlog, $debugHandler, $idna_convert, $settings);
+				}
 				if($settings['system']['mod_fcgid'] == 1 || $settings['phpfpm']['enabled'] == 1)
 				{
 					$webserver = new apache_fcgid($db, $cronlog, $debugHandler, $idna_convert, $settings);

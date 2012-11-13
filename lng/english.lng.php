@@ -1928,3 +1928,9 @@ $lng['error']['featureisdisabled'] = 'Feature %s is disabled. Please contact you
 $lng['serversettings']['catchall_enabled']['title']  = 'Use Catchall';
 $lng['serversettings']['catchall_enabled']['description']  = 'Do you want to provide your customers the catchall-feature?';
 
+$lng['admin']['suphp_settings'] = 'suPHP';
+$lng['serversettings']['mod_suphp']['title'] = 'Enable suPHP';
+$lng['serversettings']['mod_suphp']['description'] = 'Use this to run PHP with the corresponding useraccount.<br /><br /><b>This needs a special webserver configuration for Apache, see <a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/suPHP_-_handbook">suPHP - handbook</a></b>';
+$lng['serversettings']['mod_suphp']['configpath']['title'] = 'Configuration directory';
+$lng['serversettings']['mod_suphp']['configpath']['description'] = 'This option tells mod_suphp which path to pass on to the PHP-interpreter<br />(by setting the PHPRC environment variable).<br />Do *NOT* refer to a file but to the directory the file resists in.<br /><br />E.g.: If you want to use "/path/to/server/config/php.ini", use<br />"suPHP_ConfigPath /path/to/server/config"<br /><br />If you don\'t use this option, PHP will use its compiled in default path.';
+$lng['serversettings']['mod_suphp']['tmpdir']['title'] = 'Temp directory';

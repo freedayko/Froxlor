@@ -15,30 +15,38 @@
  *
  */
 
-function checkFcgidPhpFpm($fieldname, $fielddata, $newfieldvalue, $allnewfieldvalues)
+function checkPhpWrapper($fieldname, $fielddata, $newfieldvalue, $allnewfieldvalues)
 {
 	global $settings, $theme;
 
 	$returnvalue = array(FORMFIELDS_PLAUSIBILITY_CHECK_OK);
 
-	/*
-	 * check whether fcgid should be enabled but php-fpm is
-	 */
-	if($fieldname == 'system_mod_fcgid_enabled'
-		&& (int)$newfieldvalue == 1
-		&& (int)$settings['phpfpm']['enabled'] == 1
-	) {
-		$returnvalue = array(FORMFIELDS_PLAUSIBILITY_CHECK_ERROR, 'phpfpmstillenabled');
-	}
-	/*
-	 * check whether php-fpm should be enabled but fcgid is
-	 */
-	elseif($fieldname == 'system_phpfpm_enabled'
-		&& (int)$newfieldvalue == 1
-		&& (int)$settings['system']['mod_fcgid'] == 1
-	) {
-		$returnvalue = array(FORMFIELDS_PLAUSIBILITY_CHECK_ERROR, 'fcgidstillenabled');
-	}
+    $checkValues = array(
+        'system_mod_suphp_enabled' => array(
+            'settings' => &$settings['system']['mod_suphp'],
+            'error' => 'suphpstillenabled',
+        ),
+        'system_mod_fcgid_enabled' => array(
+            'settings' => &$settings['system']['mod_fcgid'],
+            'error' => 'fcgidstillenabled',
+        ),
+        'system_phpfpm_enabled' => array(
+            'settings' => &$settings['phpfpm']['enabled'],
+            'error' => 'phpfpmstillenabled',
+        ),
+    );
+
+    if (array_key_exists($fieldname, $checkValues)
+        && (int)$newfieldvalue == 1) {
+        foreach($checkValues as $checkFieldname => $checkData) {
+            if ($checkFieldname != $fieldname
+                && ((int)$checkData['settings'] == 1
+                    || (int)$allnewfieldvalues[$checkFieldname] == 1)) {
+                $returnvalue = array(FORMFIELDS_PLAUSIBILITY_CHECK_ERROR, $checkData['error']);
+                break;
+            }
+        }
+    }
 
 	return $returnvalue;
 }

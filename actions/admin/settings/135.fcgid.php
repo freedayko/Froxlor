@@ -28,7 +28,7 @@ return array(
 					'type' => 'bool',
 					'default' => false,
 					'save_method' => 'storeSettingField',
-					'plausibility_check_method' => 'checkFcgidPhpFpm',
+					'plausibility_check_method' => 'checkPhpWrapper',
 					'overview_option' => true
 					),					
 				'system_mod_fcgid_configdir' => array(
