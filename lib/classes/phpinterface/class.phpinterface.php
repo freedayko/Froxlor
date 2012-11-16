@@ -73,20 +73,22 @@ class phpinterface
 	
 	/**
 	 * set interface-object by type of
-	 * php-interface: fcgid or php-fpm
+	 * php-interface: suphp, fcgid or php-fpm
 	 * sets private $_interface variable
 	 */
 	private function _setInterface()
 	{
-		// php-fpm
-		if((int)$this->_settings['phpfpm']['enabled'] == 1)
-		{
-			$this->_interface = new phpinterface_fpm($this->_db, $this->_settings, $this->_domain);
-		}
-		elseif((int)$this->_settings['system']['mod_fcgid'] == 1)
-		{
-			$this->_interface = new phpinterface_fcgid($this->_db, $this->_settings, $this->_domain);
-		}
+        switch ((int)$this->_settings['settings']['php_sapi']) {
+            case 1:
+                $this->_interface = new phpinterface_suphp($this->_db, $this->_settings, $this->_domain);
+                break;
+            case 2:
+                $this->_interface = new phpinterface_fcgid($this->_db, $this->_settings, $this->_domain);
+                break;
+            case 3:
+                $this->_interface = new phpinterface_fpm($this->_db, $this->_settings, $this->_domain);
+                break;
+        }
 	}
 
 	/**

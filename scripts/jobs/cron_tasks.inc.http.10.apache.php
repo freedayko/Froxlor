@@ -90,8 +90,7 @@ class apache
 		}
 		$vhosts_filename = makeCorrectFile($vhosts_folder . '/05_froxlor_dirfix_nofcgid.conf');
 
-		if($this->settings['system']['mod_fcgid'] == '1'
-			|| $this->settings['phpfpm']['enabled'] == '1'
+		if((int)$this->settings['system']['php_sapi'] > 0
 		) {
 			// if we use fcgid or php-fpm we don't need this file
 			if(file_exists($vhosts_filename))
@@ -233,7 +232,7 @@ class apache
 
 				// create fcgid <Directory>-Part (starter is created in apache_fcgid)
 				if($this->settings['system']['mod_fcgid_ownvhost'] == '1'
-					&& $this->settings['system']['mod_fcgid'] == '1'
+					&& (int)$this->settings['system']['php_sapi'] == 2
 				)
 				{
 

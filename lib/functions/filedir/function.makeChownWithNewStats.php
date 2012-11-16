@@ -29,7 +29,7 @@ function makeChownWithNewStats($row)
 	global $settings, $theme;
 
 	// get correct user
-	if($settings['system']['mod_fcgid'] == '1' && isset($row['deactivated']) && $row['deactivated'] == '0')
+	if((int)$settings['system']['php_sapi'] == 2 && isset($row['deactivated']) && $row['deactivated'] == '0')
 	{
 		$user = $row['loginname'];
 		$group = $row['loginname'];

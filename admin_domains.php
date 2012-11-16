@@ -328,7 +328,7 @@ if($page == 'domains'
 					$openbasedir = isset($_POST['openbasedir']) ? 1 : 0;
 					$safemode = isset($_POST['safemode']) ? 1 : 0;
 
-					if((int)$settings['system']['mod_fcgid'] == 1)
+					if((int)$settings['system']['php_sapi'] == 2)
 					{
 						$phpsettingid = (int)$_POST['phpsettingid'];
 						$phpsettingid_check = $db->query_first("SELECT * FROM `" . TABLE_PANEL_PHPCONFIGS . "` WHERE `id` = " . (int)$phpsettingid);

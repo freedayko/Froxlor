@@ -1989,7 +1989,7 @@ if(isFroxlorVersion('0.9.28-svn5')) {
 	showUpdateStep("Updating from 0.9.28-svn5 to 0.9.28-svn6");
 
 	// Catchall functionality (enabled by default) see #1114
-	$db->query("INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_suphp', '0');");
+	$db->query("INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_sapi', '0');");
 	$db->query("INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES ('system', 'mod_suphp_configpath', '/var/www/suphp/');");
 
 	lastStepStatus(0);

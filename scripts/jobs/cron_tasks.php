@@ -95,7 +95,7 @@ while($row = $db->fetch_array($result_tasks))
 		//end dhr
 
 		// clear fcgid - starter files prior to re-creation to keep it clean, #367
-		if ($settings['system']['mod_fcgid'] == '1')
+		if ($settings['system']['php_sapi'] == 2)
 		{
 			$configdir = makeCorrectDir($settings['system']['mod_fcgid_configdir']);
 
@@ -124,7 +124,7 @@ while($row = $db->fetch_array($result_tasks))
 		}
 
 		// clear php-fpm-configurations prior to re-creation to keep it clean
-		if ($settings['phpfpm']['enabled'] == '1')
+		if ((int)$settings['system']['php_sapi'] == 3)
 		{
 			$configdir = makeCorrectDir($settings['phpfpm']['configdir']);
 
@@ -141,11 +141,11 @@ while($row = $db->fetch_array($result_tasks))
 		{
 			if($settings['system']['webserver'] == "apache2")
 			{
-				if($settings['system']['mod_suphp'] == 1)
+				if($settings['system']['php_sapi'] == 1)
 				{
 					$webserver = new apache_suphp($db, $cronlog, $debugHandler, $idna_convert, $settings);
 				}
-				if($settings['system']['mod_fcgid'] == 1 || $settings['phpfpm']['enabled'] == 1)
+				if($settings['system']['php_sapi'] == 2 || $settings['system']['php_sapi'] == 3)
 				{
 					$webserver = new apache_fcgid($db, $cronlog, $debugHandler, $idna_convert, $settings);
 				}
@@ -156,7 +156,7 @@ while($row = $db->fetch_array($result_tasks))
 			}
 			elseif($settings['system']['webserver'] == "lighttpd")
 			{
-				if($settings['system']['mod_fcgid'] == 1 || $settings['phpfpm']['enabled'] == 1)
+				if($settings['system']['php_sapi'] == 2 || $settings['system']['php_sapi'] == 3)
 				{
 					$webserver = new lighttpd_fcgid($db, $cronlog, $debugHandler, $idna_convert, $settings);
 				}
@@ -167,7 +167,7 @@ while($row = $db->fetch_array($result_tasks))
 			}
 			elseif($settings['system']['webserver'] == "nginx")
 			{
-				if($settings['phpfpm']['enabled'] == 1)
+				if($settings['system']['php_sapi'] == 3)
 				{
 					$webserver = new nginx_phpfpm($db, $cronlog, $debugHandler, $idna_convert, $settings);
 				}

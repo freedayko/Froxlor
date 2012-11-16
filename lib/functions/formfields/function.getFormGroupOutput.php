@@ -41,8 +41,10 @@ function getFormOverviewGroupOutput($groupname, $groupdetails)
 			if(isset($fielddetails['overview_option'])
 				&& $fielddetails['overview_option'] == true
 			) {
-				if($fielddetails['type'] != 'option'
-					&& $fielddetails['type'] != 'bool')
+				if(!in_array($fielddetails['type'], array(
+                    'option',
+					'bool',
+                    'radio')))
 				{
 					standard_error('overviewsettingoptionisnotavalidfield');
 				}
@@ -61,6 +63,11 @@ function getFormOverviewGroupOutput($groupname, $groupdetails)
 					$option.= '</select>';
 					$activated = true;
 				}
+                elseif($fielddetails['type'] == 'radio')
+                {
+					$option.= makeradio($fieldname, $fielddetails['label']['title'], $fielddetails['radiovalue'], false, $settings[$fielddetails['settinggroup']][$fielddetails['varname']]);
+					$activated = (int)$settings[$fielddetails['settinggroup']][$fielddetails['varname']];
+                }
 				else
 				{
 					$option.= $lng['admin']['activated'].':&nbsp;';

@@ -20,11 +20,13 @@ return array(
 		'phpfpm' => array(
 			'title' => $lng['admin']['phpfpm_settings'],
 			'fields' => array(
-				'system_phpfpm_enabled' => array(
+				'php_sapi' => array(
 					'label' => $lng['serversettings']['phpfpm'],
-					'settinggroup' => 'phpfpm',
-					'varname' => 'enabled',
-					'type' => 'bool',
+					'settinggroup' => 'system',
+					'varname' => 'php_sapi',
+					'type' => 'radio',
+                    'radiogroup' => 'php_sapi',
+                    'radiovalue' => 3,
 					'default' => false,
 					'save_method' => 'storeSettingField',
 					'plausibility_check_method' => 'checkPhpWrapper',

@@ -21,11 +21,13 @@ return array(
 			'title' => $lng['admin']['fcgid_settings'],
 			'websrv_avail' => array('apache2', 'lighttpd'),
 			'fields' => array(
-				'system_mod_fcgid_enabled' => array(
+				'php_sapi' => array(
 					'label' => $lng['serversettings']['mod_fcgid'],
 					'settinggroup' => 'system',
-					'varname' => 'mod_fcgid',
-					'type' => 'bool',
+					'varname' => 'php_sapi',
+					'type' => 'radio',
+                    'radiogroup' => 'php_sapi',
+                    'radiovalue' => 2,
 					'default' => false,
 					'save_method' => 'storeSettingField',
 					'plausibility_check_method' => 'checkPhpWrapper',

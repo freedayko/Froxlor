@@ -51,7 +51,7 @@ class lighttpd_fcgid extends lighttpd
 				$php_options_text.=	'  )'."\n";				
 			}
 			// vhost data for fcgid
-			elseif((int)$this->settings['system']['mod_fcgid'] == 1)
+			elseif((int)$this->settings['system']['php_sapi'] == 2)
 			{
 				$php_options_text = '  fastcgi.server = ( '."\n";
 				$file_extensions = explode(' ', $phpconfig['file_extensions']);

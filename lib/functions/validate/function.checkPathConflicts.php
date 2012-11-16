@@ -18,7 +18,7 @@
 function checkPathConflicts($fieldname, $fielddata, $newfieldvalue, $allnewfieldvalues)
 {
 	global $settings, $theme;
-	if((int)$settings['system']['mod_fcgid'] == 1)
+	if((int)$settings['system']['php_sapi'] == 2)
 	{
 		/**
 		 * fcgid-configdir has changed ->

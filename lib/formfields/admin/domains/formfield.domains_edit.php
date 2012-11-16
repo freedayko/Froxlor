@@ -192,19 +192,19 @@ return array(
 						'value' => array($result['safemode'])
 					),
 					'phpsettingid' => array(
-						'visible' => ((int)$settings['system']['mod_fcgid'] == 1 ? true : false),
+						'visible' => ((int)$settings['system']['php_sapi'] == 2 ? true : false),
 						'label' => $lng['admin']['phpsettings']['title'],
 						'type' => 'select',
 						'select_var' => $phpconfigs
 					),
 					'mod_fcgid_starter' => array(
-						'visible' => ((int)$settings['system']['mod_fcgid'] == 1 ? true : false),
+						'visible' => ((int)$settings['system']['php_sapi'] == 2 ? true : false),
 						'label' => $lng['admin']['mod_fcgid_starter']['title'],
 						'type' => 'text',
 						'value' => ((int)$result['mod_fcgid_starter'] != - 1 ? $result['mod_fcgid_starter'] : '')
 					),
 					'mod_fcgid_maxrequests' => array(
-						'visible' => ((int)$settings['system']['mod_fcgid'] == 1 ? true : false),
+						'visible' => ((int)$settings['system']['php_sapi'] == 2 ? true : false),
 						'label' => $lng['admin']['mod_fcgid_maxrequests']['title'],
 						'type' => 'text',
 						'value' => ((int)$result['mod_fcgid_maxrequests'] != - 1 ? $result['mod_fcgid_maxrequests'] : '')

@@ -21,11 +21,13 @@ return array(
 			'title' => $lng['admin']['suphp_settings'],
 			'websrv_avail' => array('apache2'),
 			'fields' => array(
-				'system_mod_suphp_enabled' => array(
+				'php_sapi' => array(
 					'label' => $lng['serversettings']['mod_suphp'],
 					'settinggroup' => 'system',
-					'varname' => 'mod_suphp',
-					'type' => 'bool',
+					'varname' => 'php_sapi',
+					'type' => 'radio',
+                    'radiogroup' => 'php_sapi',
+                    'radiovalue' => 1,
 					'default' => false,
 					'save_method' => 'storeSettingField',
 					'plausibility_check_method' => 'checkPhpWrapper',

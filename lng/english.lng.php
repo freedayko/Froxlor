@@ -1928,6 +1928,9 @@ $lng['error']['featureisdisabled'] = 'Feature %s is disabled. Please contact you
 $lng['serversettings']['catchall_enabled']['title']  = 'Use Catchall';
 $lng['serversettings']['catchall_enabled']['description']  = 'Do you want to provide your customers the catchall-feature?';
 
+$lng['admin']['mod_php'] = 'mod_php';
+$lng['serversettings']['mod_php']['title'] = 'Enable mod_php';
+$lng['serversettings']['mod_php']['description'] = 'Use this to run PHP with the corresponding useraccount.<br /><br /><b>This needs a special webserver configuration for Apache, see <a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/suPHP_-_handbook">suPHP - handbook</a></b>';
 $lng['admin']['suphp_settings'] = 'suPHP';
 $lng['serversettings']['mod_suphp']['title'] = 'Enable suPHP';
 $lng['serversettings']['mod_suphp']['description'] = 'Use this to run PHP with the corresponding useraccount.<br /><br /><b>This needs a special webserver configuration for Apache, see <a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/suPHP_-_handbook">suPHP - handbook</a></b>';

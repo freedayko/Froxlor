@@ -517,7 +517,7 @@ while($row = $db->fetch_array($result))
 		$result_quota = $db->query("SELECT homedir FROM `" . TABLE_FTP_USERS . "` WHERE customerid = '" . $row['customerid'] . "'");
 
 	        // get correct user
-	        if($settings['system']['mod_fcgid'] == 1 && $row['deactivated'] == '0')
+	        if($settings['system']['php_sapi'] == 2 && $row['deactivated'] == '0')
 	        {
         	        $user = $row['loginname'];
 	                $group = $row['loginname'];

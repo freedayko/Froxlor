@@ -27,7 +27,7 @@
 
 function createAWStatsVhost($siteDomain, $settings = null)
 {
-	if($settings['system']['mod_fcgid'] != '1')
+	if((int)$settings['system']['php_sapi'] != 2)
 	{
 		$vhosts_file = '  # AWStats statistics' . "\n";
 		$vhosts_file.= '  RewriteEngine On' . "\n";

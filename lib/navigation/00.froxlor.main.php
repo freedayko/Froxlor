@@ -243,11 +243,11 @@ return array (
 					'url' => 'admin_phpsettings.php?page=overview',
 					'label' => $lng['menue']['phpsettings']['maintitle'],
 					'show_element' => ( 
-						getSetting('system', 'mod_fcgid') == true 
+						(int)getSetting('system', 'php_sapi') == 2
 						/* 
 						 * @TODO activate if phpfpm knows custom php.ini files
 						 * 
-						 * || getSetting('phpfpm', 'enabled') == true
+						 * || (int)getSetting('system', 'php_sapi') == 3
 						 */
 						),
 				),
